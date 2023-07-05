@@ -1,0 +1,36 @@
+﻿@using Buoi7Q3.Models;
+<html>
+    <head></head>
+    <body>
+
+        <h2>List of employee</h2>
+        <form action="/Employee/Search" method="post">
+            <p>Search emp</p>
+            Position :
+            <select name="pos" onchange="this.form.submit();">
+                <option value="all">All</option>
+                @foreach(var item in ViewBag.listg){
+                    <option value="@item.Key">@item.Key</option>
+                }
+            </select>
+        </form>
+        <table border="1" style="border-collapse:collapse;">
+            <tr>
+                <th>Name</th>
+                <th>Sex</th>
+                <th>Position</th>
+                <th>Action</th>
+            </tr>
+
+
+            @foreach(Employee item in (List<Employee>)ViewData["list"]){
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Sex</td>
+                    <td>@item.Position</td>
+                    <td><a href="/Employee/Delete?id=@item.Id">Delete</a></td>
+                </tr>
+            }
+        </table>
+    </body>
+</html>

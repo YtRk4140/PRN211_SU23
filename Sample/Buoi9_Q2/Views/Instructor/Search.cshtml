@@ -1,0 +1,40 @@
+﻿@using Buoi9_Q2.Models;
+<html>
+<head>
+</head>
+<body>
+    <form method="post" action="/Instructor/Search">
+        Department:
+        <select name="de">
+            @foreach (Department item in ViewBag.listd)
+            {
+                <option value="@item.DepartmentId">@item.DepartmentName</option>
+            }
+        </select>
+        <br />
+        Contract Type:
+        <select name="con">
+            <option value="true">FullTime</option>
+            <option value="false">PartTime</option>
+        </select>
+
+        <br />
+        Sort By:
+        <input type="radio" name="sort" value="1" /> IntructorName
+        <input type="radio" name="sort" value="2" /> IntructorId
+        <input type="radio" name="sort" value="3" /> ContractDate
+        <br />
+        <button type="submit"> Filter</button>
+    </form>
+
+    <h2>List Instructor</h2>
+    <table>
+        @foreach (Instructor2 item in ViewBag.listi)
+        {
+            <tr>
+                <td>@item.InstructorId - @item.Fullname - @item.DepartmentName - @item.ContractDate.Value.ToString("dd-MM-yyyyy") </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@using Buoi8Q2.Models;
+<html>
+    <head></head>
+    <body>
+        <h2>List of Movies</h2>
+        <div style="width:100%; display:flex;">
+            <div style="width:20%;">
+               <h3>Directors</h3>
+            @foreach (Director item in ViewBag.listd){
+                if(item.Id== ViewBag.id){
+                    <a href="/Movies/Director_Movie?id=@item.Id" style="font-weight:bold"> @item.FullName </a>
+                }
+               else{
+                    <a href="/Movies/Director_Movie?id=@item.Id" > @item.FullName </a>
+               }
+
+                <br />
+            }
+            </div>
+            <div>
+                <h3>Movies </h3>
+                <table border="1" style="border-collapse:collapse;">
+                    <tr >
+                        <th>Title</th>
+                        <th>ReleaseDate</th>
+                        <th>Description</th>
+                        <th>Language</th>
+                        <th>Director</th>
+                        <th>Producre</th>
+                        <th style="width:20%;">Stars</th>
+                    </tr>
+                @foreach (Movie item in ViewBag.movies){
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.ReleaseDate.Value.ToString("dd-MM-yyyy")</td>
+                        <td>@item.Description</td>
+                        <td>@item.Language</td>
+                        <td>@(item.Director != null ? item.Director.FullName: "")</td>
+                        <td>@item.Producer.Name</td>
+                        <td>
+                            @foreach(Star item1 in item.Stars){
+                                <p>@item1.FullName - <a href="/Movies/Delete?idmovie=@item.Id&idstar=@item1.Id">Remove</a></p>
+                            }
+                        </td>
+                    </tr>
+                }
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

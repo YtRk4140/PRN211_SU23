@@ -1,0 +1,32 @@
+﻿@using Buoi10_Q3.Models;
+<html>
+    <head></head>
+    <body>
+
+        <div>
+            <form action="/Student/Search" method="post">
+            <select name="sex" onchange="this.form.submit();">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </form>
+            <h2>List of Student</h2>
+            <table>
+                <tr>
+                    <th>FullName</th>
+                    <th>Sex</th>
+                    <th>Dob</th>
+                    <th>Email</th>
+                </tr>
+                @foreach(Student item in ViewBag.lists){
+                    <tr>
+                        <td>@item.Fullname</td>
+                        <td>@item.Sex</td>
+                        <td>@item.Dob</td>
+                        <td>@item.Email</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </body>
+</html>
