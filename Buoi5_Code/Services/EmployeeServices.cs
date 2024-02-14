@@ -1,20 +1,19 @@
-﻿using Buoi5.Models;
-using Buoi5.Repository;
+﻿using Buoi5.Repository;
+using Buoi5_Code.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Buoi5.Services
+namespace Buoi5_Code.Services
 {
-    public class EmployeeServices : IEmployee
+    internal class EmployeeServices : IEmployee
     {
-        
-
-        public EmployeeServices()
+        private readonly PE_Fall21B5Context dbcontext;
+        public EmployeeServices(PE_Fall21B5Context _context)
         {
-            
+            dbcontext = _context;  
         }
 
         public void AddEmp(Employee e)
@@ -26,19 +25,19 @@ namespace Buoi5.Services
                 context.Dispose();
             }
         }
-        
+
         public void DeleteEmp(int id)
         {
             using (var context = new PE_Fall21B5Context())
             {
                 Employee e = context.Employees.FirstOrDefault(x => x.Id == id);
-                if(e!= null)
+                if (e != null)
                 {
                     context.Employees.Remove(e);
                     context.SaveChanges();
                     context.Dispose();
                 }
-               
+
             }
         }
 
@@ -47,7 +46,7 @@ namespace Buoi5.Services
             List<Employee> list = new List<Employee>();
             using (var context = new PE_Fall21B5Context())
             {
-                list= context.Employees.ToList();
+                list = context.Employees.ToList();
                 context.Dispose();
             }
             return list;

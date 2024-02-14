@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "Test": "server=DESKTOP-2UH4606\\SQLEXPRESS; database=PE_Fall21B5;user=sa;password=12345;Integrated Security=true;TrustServerCertificate=Yes"
+    "Test": "server=(local); database=PE_Fall21B5;user=sa;password=12345;Integrated Security=true;TrustServerCertificate=Yes"
   }
 
 }

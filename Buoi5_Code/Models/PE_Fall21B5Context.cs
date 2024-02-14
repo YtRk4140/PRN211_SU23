@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 
-namespace Buoi5.Models
+namespace Buoi5_Code.Models
 {
     public partial class PE_Fall21B5Context : DbContext
     {
@@ -25,9 +25,8 @@ namespace Buoi5.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var config = new ConfigurationBuilder().AddJsonFile("appsetting.json").Build();
-                optionsBuilder.UseSqlServer(config.GetConnectionString("Test"));
-
+                var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+                    optionsBuilder.UseSqlServer(config.GetConnectionString("Test"));
             }
         }
 

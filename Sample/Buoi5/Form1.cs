@@ -45,7 +45,6 @@ namespace Buoi5
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
             LoadData();
             var groupbyPos = e1.GetAll().GroupBy(x => x.Position);
             comboBox1.DisplayMember = "Key";
@@ -56,7 +55,7 @@ namespace Buoi5
             comboBox2.ValueMember = "Id";
             comboBox2.DataSource = d1.GetAll();
 
-            MessageBox.Show("Loadd");
+            MessageBox.Show("Load");
         }
 
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -66,7 +65,7 @@ namespace Buoi5
                 textBox2.Text = dgv.Rows[e.RowIndex].Cells["Column1"].Value.ToString();
                 textBox3.Text = dgv.Rows[e.RowIndex].Cells["Column2"].Value.ToString();
                 dateTimePicker1.Value = DateTime.Parse(dgv.Rows[e.RowIndex].Cells["Column3"].Value.ToString());
-                bool sex =bool.Parse( dgv.Rows[e.RowIndex].Cells["Column4"].Value.ToString());
+                bool sex = bool.Parse(dgv.Rows[e.RowIndex].Cells["Column4"].Value.ToString());
                 if (sex == true)
                 {
                     radioButton1.Checked = true;
@@ -95,7 +94,7 @@ namespace Buoi5
                 MessageBox.Show("Ban da add thanh cong Emp");
                 LoadData();
                 LoadForm();
-                
+
 
 
             }
@@ -121,9 +120,6 @@ namespace Buoi5
                 MessageBox.Show("Ban da update thanh cong Emp");
                 LoadData();
                 LoadForm();
-
-
-
             }
             catch
             {
@@ -133,7 +129,8 @@ namespace Buoi5
 
         private void button4_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 int id = int.Parse(textBox2.Text);
                 e1.DeleteEmp(id);
                 MessageBox.Show("Ban da remove thanh cong Emp");
@@ -141,7 +138,8 @@ namespace Buoi5
                 LoadForm();
 
             }
-            catch {
+            catch
+            {
             }
         }
 
@@ -151,6 +149,10 @@ namespace Buoi5
             form.Show();
             form.FormClosed += Form1_Load;
 
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

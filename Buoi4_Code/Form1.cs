@@ -112,6 +112,7 @@ namespace Buoi4_Code
             {
                 int id = int.Parse(textBox2.Text);
                 DialogResult r = MessageBox.Show("Ban co chac muon xoa khong", "Thong bao", MessageBoxButtons.YesNo);
+
                 if (r == DialogResult.Yes)
                 {
                     int row = Function.Delete(id);
